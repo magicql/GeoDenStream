@@ -1,0 +1,18 @@
+package denstream.configure;
+
+public class ProcessOfflineCluster 
+{
+	/////////////////////////////////////////////////////////////////////////////////
+	//
+	//
+	//
+	/////////////////////////////////////////////////////////////////////////////////
+	public static void fillPotentialCluster(moa.clusterers.denstream.WithDBSCAN den,
+			int data_count, 
+			double[] point_x_list, 
+			double[] point_y_list,
+			int[] point_id_list)
+	{
+	}
+	}
+}

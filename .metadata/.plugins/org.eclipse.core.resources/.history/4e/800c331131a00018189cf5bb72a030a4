@@ -1,0 +1,71 @@
+package denstream.zikaebola;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import moa.cluster.Clustering;
+
+public class SaveDailyCluster {
+
+	public static void writeDailyClusterInfo(
+			String outfileName_DailyCluster,
+			int iDay,
+			Clustering daily_cluster)
+	{
+		Integer day_idx = iDay+1;
+        String outfileName_cur_day_cluster = outfileName_DailyCluster + "ClusterInfo"+ day_idx.toString()+".csv";
+    
+        try {
+			BufferedWriter outBufWriter =new BufferedWriter(new FileWriter(outfileName_cur_day_cluster));
+			
+			outBufWriter.write("cluster_id,center_x,center_y,radius,weight\n");
+			
+			int cluster_count = daily_cluster.size();        
+	        for (int iCluster = 0; iCluster<cluster_count; iCluster++)
+			{
+				moa.clusterers.macro.NonConvexCluster temp_cluster = 
+					(moa.clusterers.macro.NonConvexCluster)daily_cluster.getClustering().get(iCluster);
+				Integer cluster_id = (int) temp_cluster.getId();
+				double[] center = temp_cluster.getCenter();
+				Double radius = temp_cluster.getRadius();
+				Double weight = temp_cluster.getWeight();
+				
+				Double center_x = center[0];
+				Double center_y = center[1];
+				
+				outBufWriter.write(cluster_id.toString());
+				outBufWriter.write(",");
+				outBufWriter.write(center[0]);
+				outBufWriter.write(",");
+				outBufWriter.write(center[0]);
+				outBufWriter.write(",");
+				outBufWriter.write("\n");
+			}
+	        
+			for (int iTweet=0; iTweet<daily_tweet.size(); iTweet++)
+			{
+				{
+					Integer cluster_id_value = cluster_id_hash.get(iTweet);
+					if (cluster_id_value != null)
+					{
+						Integer recluster_id_value = recluster_id_hash.get(iTweet);
+						
+						String newStr = str + ", " + cluster_id_value.toString();
+						newStr = newStr + ", " + recluster_id_value.toString();
+						outBufWriter.write(newStr);
+						outBufWriter.write("\n");
+					}
+				}
+			}
+			
+			outBufWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+        
+	}
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1533528630143_1" label="moa-pom" name="moa-pom">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/weka-package" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/moa" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1533528553241_0" label="Window Working Set" name="Aggregate for window 1533528553240"/>
+</workingSetManager>

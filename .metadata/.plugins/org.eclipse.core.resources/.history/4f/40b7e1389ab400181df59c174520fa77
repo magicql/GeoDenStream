@@ -1,0 +1,264 @@
+package denstream.configure;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+
+
+public class SaveIntervalData 
+{
+	/////////////////////////////////////////////////////////////////////////////////
+	//
+	//
+	//
+	/////////////////////////////////////////////////////////////////////////////////
+	public static void writeIntervalDataWithClusterInfo(
+			String outfileName_IntervalCluster,
+			int iInterval, String header,
+			ArrayList<String> daily_tweet,
+			HashMap<Integer, Integer> cluster_id_hash,
+			HashMap<Integer, Integer> connected_cluster_id_hash,
+			moa.clusterers.denstream.WithDBSCAN den)
+	{
+		Integer interval_idx = iInterval+1;
+        String outfileName_cur_interval = outfileName_IntervalCluster + "GeoDenStream_Cluster"+ interval_idx.toString()+".csv";
+        
+        try {
+			BufferedWriter outBufWriter =new BufferedWriter(new FileWriter(outfileName_cur_interval));
+			
+			if (connected_cluster_id_hash.size()>0)
+			{
+				String header1 = header + ",sink_cluster,source_cluster\n";
+				outBufWriter.write(header1);			
+				for (int iTweet=0; iTweet<daily_tweet.size(); iTweet++)
+				{
+					String str = daily_tweet.get(iTweet);
+					
+					Integer cluster_id_value = cluster_id_hash.get(iTweet);
+					if (cluster_id_value != null)
+					{
+						Integer recluster_id_value = connected_cluster_id_hash.get(iTweet);
+						
+						String newStr = str + ", " + cluster_id_value.toString();
+						newStr = newStr + ", " + recluster_id_value.toString();
+						outBufWriter.write(newStr);
+						outBufWriter.write("\n");
+					}				
+				}
+			}
+			else
+			{
+				String header1 = header + ",cluster\n";
+				outBufWriter.write(header1);	
+				for (int iTweet=0; iTweet<daily_tweet.size(); iTweet++)
+				{
+					String str = daily_tweet.get(iTweet);
+					
+					Integer cluster_id_value = cluster_id_hash.get(iTweet);
+					if (cluster_id_value != null)
+					{
+						String newStr = str + "," + cluster_id_value.toString();							
+						outBufWriter.write(newStr);
+						outBufWriter.write("\n");
+					}
+				}
+			}
+			
+			outBufWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+
+		String outfileName_potential_cluster = outfileName_IntervalCluster + "GeoDenStream_PotentialCluster"+ interval_idx.toString()+".csv";
+	    
+        try {
+			BufferedWriter outBufWriter =new BufferedWriter(new FileWriter(outfileName_potential_cluster));
+
+			String header1 = header + ",cluster\n";
+			outBufWriter.write(header1);
+
+			moa.cluster.Cluster c = null;
+			moa.clusterers.denstream.MicroCluster temp_cluster = null;
+			int cluster_count = den.p_micro_cluster.size();        
+	        for (int iCluster = 0; iCluster<cluster_count; iCluster++)
+			{
+				c = den.p_micro_cluster.get(iCluster);
+				temp_cluster = (moa.clusterers.denstream.MicroCluster)c;
+				
+				Integer temp_potential_cluster_id = iCluster+1;
+				int point_count = temp_cluster.related_point_idxs.size();
+				for (int iPoint = 0; iPoint<point_count; iPoint++)
+				{
+					Integer temp_idx = temp_cluster.related_point_idxs.get(iPoint);
+					String temp_line = daily_tweet.get(temp_idx);
+					outBufWriter.write(temp_line);
+					outBufWriter.write(",");
+					outBufWriter.write(temp_potential_cluster_id.toString());
+					outBufWriter.write("\n");
+				}
+			}
+	        
+			outBufWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void readWriteIntervalDataWithClusterInfo(
+			String inputfileName,
+			String outfileName_IntervalCluster,			
+			int iInterval, String header,
+			HashMap<Integer, Integer> cluster_id_hash,
+			HashMap<Integer, Integer> connected_cluster_id_hash,
+			int acc_count, int cur_interval_count, int real_start_index,
+			moa.clusterers.denstream.WithDBSCAN den)
+	{
+		Integer interval_idx = iInterval+1;
+        String outfileName_cur_interval = outfileName_IntervalCluster + "GeoDenStream"+ interval_idx.toString()+".csv";
+        
+        //////////////////////////////////////////////////////////////////////////
+		FileInputStream fis = null;
+		InputStreamReader isr = null;
+		BufferedReader br = null;
+		try {
+			fis = new FileInputStream(inputfileName);
+			isr = new InputStreamReader(fis);
+			br = new BufferedReader(isr);
+			BufferedWriter outBufWriter =new BufferedWriter(new FileWriter(outfileName_cur_interval));
+			
+			String str = "";
+			str = br.readLine();
+			
+			if (connected_cluster_id_hash.size()>0)
+			{
+				String header1 = header + ",sink_cluster,source_cluster\n";
+				outBufWriter.write(header1);
+				
+				int point_idx = 0;		
+				while ((str = br.readLine()) != null) {
+					point_idx++;
+					if (point_idx<real_start_index+acc_count) 
+					{
+						continue;
+					}
+					if (point_idx>real_start_index+acc_count+cur_interval_count) break;
+	
+					Integer value1 = cluster_id_hash.get(point_idx-real_start_index-1);
+					Integer value2 = connected_cluster_id_hash.get(point_idx-real_start_index-1);
+					if (value1 != null && value2 !=null)
+					{
+						str = str + ", " + value1.toString() + ", " + value2.toString();
+						outBufWriter.write(str);
+						outBufWriter.write("\n");
+					}
+				}
+			}
+			else
+			{
+				String header1 = header + ",cluster\n";
+				outBufWriter.write(header1);
+			
+				int point_idx = 0;		
+				while ((str = br.readLine()) != null) {
+					point_idx++;
+					if (point_idx<real_start_index+acc_count) continue;
+					if (point_idx>real_start_index+acc_count+cur_interval_count) break;
+	
+					Integer value = cluster_id_hash.get(point_idx-real_start_index-1);
+					if (value != null)
+					{
+						str = str + ", " + value.toString();
+						outBufWriter.write(str);
+						outBufWriter.write("\n");
+					}
+				}
+			}
+			outBufWriter.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("cannot find file");
+		} catch (IOException e) {
+			System.out.println("read file failed");
+		} finally {
+			try {
+				br.close();
+				isr.close();
+				fis.close();				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+
+		String outfileName_potential_cluster = outfileName_IntervalCluster + "GeoDenStream_PotentialCluster"+ interval_idx.toString()+".csv";
+	    
+        try {
+			/*BufferedWriter outBufWriter =new BufferedWriter(new FileWriter(outfileName_potential_cluster));
+
+			String header1 = header + ",cluster\n";
+			outBufWriter.write(header1);
+
+			moa.cluster.Cluster c = null;
+			moa.clusterers.denstream.MicroCluster temp_cluster = null;
+			int cluster_count = den.p_micro_cluster.size();        
+	        for (int iCluster = 0; iCluster<cluster_count; iCluster++)
+			{
+				c = den.p_micro_cluster.get(iCluster);
+				temp_cluster = (moa.clusterers.denstream.MicroCluster)c;
+				
+				Integer temp_potential_cluster_id = iCluster+1;
+				int point_count = temp_cluster.related_point_idxs.size();
+				for (int iPoint = 0; iPoint<point_count; iPoint++)
+				{
+					Integer temp_idx = temp_cluster.related_point_idxs.get(iPoint);
+					String temp_line = daily_tweet.get(temp_idx);
+					outBufWriter.write(temp_line);
+					outBufWriter.write(",");
+					outBufWriter.write(temp_potential_cluster_id.toString());
+					outBufWriter.write("\n");
+				}
+			}*/
+        	
+//////////////////////////////////////////////////////////////////////////////////
+	        fis = new FileInputStream(inputfileName);
+			isr = new InputStreamReader(fis);
+			br = new BufferedReader(isr);
+			BufferedWriter outBufWriter =new BufferedWriter(new FileWriter(outfileName_cur_interval));
+			
+			String str = "";
+			str = br.readLine();	        
+			{
+				String header1 = header + ",cluster\n";
+				outBufWriter.write(header1);
+			
+				int point_idx = 0;		
+				while ((str = br.readLine()) != null) {
+					point_idx++;
+					if (point_idx<real_start_index+acc_count) continue;
+					if (point_idx>real_start_index+acc_count+cur_interval_count) break;
+	
+					Integer value = cluster_id_hash.get(point_idx-real_start_index-1);
+					if (value != null)
+					{
+						str = str + ", " + value.toString();
+						outBufWriter.write(str);
+						outBufWriter.write("\n");
+					}
+				}
+			}
+			outBufWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

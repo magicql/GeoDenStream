@@ -1,0 +1,20 @@
+package denstream.zikaebola;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class SaveDailyCluster {
+
+	public static void writeDailyClusterInfo(
+			String outfileName_DailyCluster,
+			int iDay,
+			ArrayList<String> daily_tweet,
+			HashMap<Integer, Integer> cluster_id_hash,
+			HashMap<Integer, Integer> recluster_id_hash)
+	{
+		Integer day_idx = iDay+1;
+        String outfileName_cur_day_cluster = outfileName_DailyCluster + "ClusterInfo"+ day_idx.toString()+".csv";
+    
+        
+	}
+}

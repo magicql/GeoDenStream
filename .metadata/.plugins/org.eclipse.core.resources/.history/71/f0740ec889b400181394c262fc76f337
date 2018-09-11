@@ -1,0 +1,81 @@
+package denstream.configure;
+
+import java.util.ArrayList;
+
+import moa.cluster.Clustering;
+
+public class ProcessOfflineCluster 
+{
+	/////////////////////////////////////////////////////////////////////////////////
+	//
+	//
+	//
+	/////////////////////////////////////////////////////////////////////////////////
+	public static void fillOfflineCluster(moa.clusterers.denstream.WithDBSCAN den,
+			Clustering interval_cluster,
+			int data_count, 
+			double[] point_x_list, 
+			double[] point_y_list,
+			int[] point_id_list,
+			ArrayList<Integer> remained_points_idx_list)
+	{
+		int cluster_count = interval_cluster.size();
+		
+		int point_count = remained_points_idx_list.size();
+		for (int iPoint=0; iPoint<point_count; iPoint++)
+		{	
+			double temp_x = point_x_list[remained_points_idx_list.get(iPoint)];
+			double temp_y = point_y_list[iPoint];
+
+			double overall_min_dist = 1000000000;
+			int nearest_cluster_idx = -1;
+			int nearest_micro_cluster_idx = -1;
+
+			for (int iCluster = 0; iCluster<cluster_count; iCluster++)
+			{
+				moa.clusterers.macro.NonConvexCluster temp_cluster = 
+					(moa.clusterers.macro.NonConvexCluster)interval_cluster.getClustering().get(iCluster);
+				
+				int micro_cluster_count = temp_cluster.getMicroClusters().size();
+				for (int iMicro = 0; iMicro < micro_cluster_count; iMicro++) 
+				{
+					moa.clusterers.denstream.MicroCluster temp_micro_cluster = 
+						(moa.clusterers.denstream.MicroCluster)temp_cluster.getMicroClusters().get(iMicro);					
+					int point_count = temp_micro_cluster.related_point_idxs.size();
+					if (point_count <= 0) continue;
+					
+					double min_dist = 0;
+					double temp_x1 = point_x_list[temp_micro_cluster.related_point_idxs.get(0)];
+					double temp_y1 = point_y_list[temp_micro_cluster.related_point_idxs.get(0)];
+					min_dist = (temp_x-temp_x1)*(temp_x-temp_x1) + (temp_y-temp_y1)*(temp_y-temp_y1);
+					
+					for (int iPP=1; iPP<point_count; iPP++)
+					{
+						temp_x1 = point_x_list[temp_micro_cluster.related_point_idxs.get(iPP)];
+						temp_y1 = point_y_list[temp_micro_cluster.related_point_idxs.get(iPP)];
+						double temp_dist = (temp_x-temp_x1)*(temp_x-temp_x1) + (temp_y-temp_y1)*(temp_y-temp_y1);
+						if (temp_dist<min_dist)
+							min_dist = temp_dist;
+					}
+					
+					if (min_dist < overall_min_dist)
+					{
+						overall_min_dist = min_dist;
+						nearest_cluster_idx = iCluster;
+						nearest_micro_cluster_idx = iMicro;
+					}
+				}
+			}
+			
+			if (overall_min_dist < den.epsilonOption.getValue()*den.epsilonOption.getValue()*4)
+			{
+				moa.clusterers.macro.NonConvexCluster nearest_cluster = 
+						(moa.clusterers.macro.NonConvexCluster)interval_cluster.getClustering().get(nearest_cluster_idx);
+				moa.clusterers.denstream.MicroCluster nearest_micro_cluster = 
+						(moa.clusterers.denstream.MicroCluster)nearest_cluster.getMicroClusters().get(nearest_micro_cluster_idx);
+				
+				nearest_micro_cluster.related_point_idxs.add(point_id_list[iPoint]);
+			}
+		}
+	}
+}

@@ -1,0 +1,107 @@
+package denstream.configure;
+
+import java.util.ArrayList;
+
+import moa.cluster.Clustering;
+
+public class ProcessOfflineCluster 
+{
+	/////////////////////////////////////////////////////////////////////////////////
+	//
+	//
+	//
+	/////////////////////////////////////////////////////////////////////////////////
+	public static void fillOfflineCluster(moa.clusterers.denstream.WithDBSCAN den,
+			Clustering interval_cluster,
+			int data_count, 
+			double[] point_x_list, 
+			double[] point_y_list,
+			int[] point_id_list,
+			ArrayList<Integer> all_involved_points)
+	{
+		int cluster_count = interval_cluster.size();
+		
+		for (int iPoint=0; iPoint<data_count; iPoint++)
+		{
+			if (all_involved_points.contains(point_id_list[iPoint])==true) continue;
+			
+			double temp_x = point_x_list[iPoint];
+			double temp_y = point_y_list[iPoint];
+
+			double overall_min_dist = 1000000000;
+			int nearest_cluster_idx = -1;
+
+			for (int iCluster = 0; iCluster<cluster_count; iCluster++)
+			{
+				moa.clusterers.macro.NonConvexCluster temp_cluster = 
+					(moa.clusterers.macro.NonConvexCluster)interval_cluster.getClustering().get(iCluster);
+				
+				int micro_cluster_count = temp_cluster.getMicroClusters().size();
+				for (int iMicro = 0; iMicro < micro_cluster_count; iMicro++) 
+				{
+					moa.clusterers.denstream.MicroCluster temp_micro_cluster = 
+						(moa.clusterers.denstream.MicroCluster)temp_cluster.getMicroClusters().get(iMicro);					
+					int point_count = temp_micro_cluster.related_point_idxs.size();
+					if (point_count <= 0) continue;
+					
+					double min_dist = 0;
+					double temp_x1 = point_x_list[temp_micro_cluster.related_point_idxs.get(0)];
+					double temp_y1 = point_y_list[temp_micro_cluster.related_point_idxs.get(0)];
+					min_dist = (temp_x-temp_x1)*(temp_x-temp_x1) + (temp_y-temp_y1)*(temp_y-temp_y1);
+					
+					for (int iPP=1; iPP<point_count; iPP++)
+					{
+						temp_x1 = point_x_list[temp_micro_cluster.related_point_idxs.get(iPP)];
+						temp_y1 = point_y_list[temp_micro_cluster.related_point_idxs.get(iPP)];
+						double temp_dist = (temp_x-temp_x1)*(temp_x-temp_x1) + (temp_y-temp_y1)*(temp_y-temp_y1);
+						if (temp_dist<min_dist)
+							min_dist = temp_dist;
+					}
+					
+					if (min_dist < overall_min_dist)
+					{
+						overall_min_dist = min_dist;
+						nearest_cluster_idx = iPC;
+					}
+				}
+			}
+			
+			for (int iPC = 0; iPC < potential_count; iPC++) 
+			{
+				moa.cluster.Cluster c = den.getMicroClusteringResult().get(iPC);
+				moa.clusterers.denstream.MicroCluster temp_cluster = (moa.clusterers.denstream.MicroCluster)c;
+				if (temp_cluster.related_points.size() <= 0) continue;
+				
+				double min_dist = 0;
+				double[] temp_coord = temp_cluster.related_points.get(0);
+				double temp_x1 = temp_coord[0];
+				double temp_y1 = temp_coord[1];
+				min_dist = (temp_x-temp_x1)*(temp_x-temp_x1) + (temp_y-temp_y1)*(temp_y-temp_y1);
+				
+				int point_count=temp_cluster.related_points.size();
+				for (int iPP=1; iPP<point_count; iPP++)
+				{
+					temp_coord = temp_cluster.related_points.get(iPP);
+					temp_x1 = temp_coord[0];
+					temp_y1 = temp_coord[1];
+					double temp_dist = (temp_x-temp_x1)*(temp_x-temp_x1) + (temp_y-temp_y1)*(temp_y-temp_y1);
+					if (temp_dist<min_dist)
+						min_dist = temp_dist;
+				}
+				
+				if (min_dist < overall_min_dist)
+				{
+					overall_min_dist = min_dist;
+					nearest_cluster_idx = iPC;
+				}
+			}
+			if (overall_min_dist < den.epsilonOption.getValue()*den.epsilonOption.getValue())
+			{
+				moa.cluster.Cluster c = den.getMicroClusteringResult().get(nearest_cluster_idx);
+				moa.clusterers.denstream.MicroCluster nearest_cluster = (moa.clusterers.denstream.MicroCluster)c;
+				
+				nearest_cluster.related_point_idxs.add(point_id_list[iPoint]);
+			}
+		}
+	}
+}
