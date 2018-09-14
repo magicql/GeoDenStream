@@ -448,6 +448,15 @@ public class DSC_Dynamic {
 			den.time_step_milliseconds = (int) (tp_time_value*1000);
 		}
 		
+		if (improve_process)
+		{
+			den.geoDenStreamOption.setValue(1);
+		}
+		else
+		{
+			den.geoDenStreamOption.setValue(0);
+		}
+		
 		den.resetLearningImpl();
 		
 		String params = den.getParameterString();
@@ -502,10 +511,10 @@ public class DSC_Dynamic {
 			if (tpType==3){
 				if (iInterval >= interval_dynamic_tp.size())
 					den.time_step_milliseconds = 
-						(int) (Math.round(interval_dynamic_tp.get(interval_dynamic_tp.size()-1))*1000*60);
+						(int) (Math.round(interval_dynamic_tp.get(interval_dynamic_tp.size()-1))*1000);
 				else
 					den.time_step_milliseconds = 
-						(int) (Math.round(interval_dynamic_tp.get(iInterval))*1000*60);
+						(int) (Math.round(interval_dynamic_tp.get(iInterval))*1000);
 			}
 			
 			for (int iPoint = 0; iPoint < interval_point_count; iPoint++) {
@@ -716,6 +725,15 @@ public class DSC_Dynamic {
 		den.evaluateMicroClusteringOption.setValue(true);
 		
 		den.tp = tp_count_value;
+
+		if (improve_process)
+		{
+			den.geoDenStreamOption.setValue(1);
+		}
+		else
+		{
+			den.geoDenStreamOption.setValue(0);
+		}
 		
 		den.resetLearningImpl();
 		

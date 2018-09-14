@@ -67,6 +67,8 @@ public class WithDBSCAN extends AbstractClusterer {
 	public IntOption speedOption = new IntOption("processingSpeed", 's',
 			"Number of incoming points per time unit.", 100, 1, 1000);
 
+	public IntOption geoDenStreamOption = new IntOption("improveGeoDenStream", 'g',
+			"0 indicates no imporve, 1 indicates improve for GeoDenStream.", 1, 0, 1);
 	
 	double lambda;
 	double epsilon;
@@ -92,6 +94,8 @@ public class WithDBSCAN extends AbstractClusterer {
 	protected int numProcessedPerUnit;
 	protected int processingSpeed;
 	// TODO Some variables to prevent duplicated processes
+	
+	private Boolean withImprove = true;
 
 	public ArrayList<Integer> pruned_list;
 
@@ -119,6 +123,9 @@ public class WithDBSCAN extends AbstractClusterer {
 		numProcessedPerUnit = 0;
 		processingSpeed = speedOption.getValue();
 		
+		if (geoDenStreamOption.getValue() == 0) withImprove = false;
+		else withImprove = true;
+		
 		pruned_list = new ArrayList<Integer>();
 	}
 
@@ -141,21 +148,24 @@ public class WithDBSCAN extends AbstractClusterer {
 				}
 			}
 		}
-		for (int i=0; i<p_micro_cluster.size(); i++)
+		if (withImprove==true)
 		{
-			MicroCluster temp_pc = (MicroCluster)p_micro_cluster.get(i);
-			int temp_point_count = temp_pc.related_point_idxs.size();
-			for (int iPoint=0; iPoint<temp_point_count; iPoint++)
+			for (int i=0; i<p_micro_cluster.size(); i++)
 			{
-				initBufferPointIndex.remove(temp_pc.related_point_idxs.get(iPoint));
+				MicroCluster temp_pc = (MicroCluster)p_micro_cluster.get(i);
+				int temp_point_count = temp_pc.related_point_idxs.size();
+				for (int iPoint=0; iPoint<temp_point_count; iPoint++)
+				{
+					initBufferPointIndex.remove(temp_pc.related_point_idxs.get(iPoint));
+				}
 			}
-		}
-		for (int i=0; i<initBufferPointIndex.size(); i++)
-		{
-			int idx = initBufferPointIndex.get(i);
-			o_micro_cluster.getClustering().add(
-				new MicroCluster(initBuffer.get(idx), initBuffer.get(idx).toDoubleArray().length,
-								 timestamp, lambda, currentTimestamp));
+			for (int i=0; i<initBufferPointIndex.size(); i++)
+			{
+				int idx = initBufferPointIndex.get(i);
+				o_micro_cluster.getClustering().add(
+					new MicroCluster(initBuffer.get(idx), initBuffer.get(idx).toDoubleArray().length,
+									 timestamp, lambda, currentTimestamp));
+			}
 		}
 	}
 

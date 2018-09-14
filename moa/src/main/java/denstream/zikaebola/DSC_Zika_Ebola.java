@@ -466,7 +466,7 @@ public class DSC_Zika_Ebola {
 				//System.out.println("\nrecluster_id_map");
 
 				//////////////////////////////////////////////////////////////////////
-				HashMap<Integer, Integer> recluster_id_hashMap = new HashMap<>();
+				/*HashMap<Integer, Integer> recluster_id_hashMap = new HashMap<>();
 				String retw_x_str;
 				String retw_y_str;
 				double temp_x_val;
@@ -476,8 +476,8 @@ public class DSC_Zika_Ebola {
 					String str = curDayTweetRecords.get(iRecord);
 					String[] temp_line_array = str.split(",");
 
-					retw_x_str = temp_line_array[11];
-					retw_y_str = temp_line_array[12];
+					retw_x_str = temp_line_array[12];
+					retw_y_str = temp_line_array[13];
 					temp_x_val = Double.parseDouble(retw_x_str);
 					temp_y_val = Double.parseDouble(retw_y_str);
 					
@@ -494,9 +494,9 @@ public class DSC_Zika_Ebola {
 						//System.out.print("\n");
 					}
 					
-				}
+				}*/
 				//////////////////////////////////////////////////////////////////////
-				/*HashMap<Integer, Integer> recluster_id_hashMap = new HashMap<>();
+				HashMap<Integer, Integer> recluster_id_hashMap = new HashMap<>();
 				for (int iPoint = 0; iPoint < daily_point_count; iPoint++) {
 					double[] temp_coord = connected_coord_list.get(iPoint);
 					
@@ -512,7 +512,7 @@ public class DSC_Zika_Ebola {
 						//System.out.print(cluster_id_value);
 						//System.out.print("\n");
 					}
-				}*/
+				}
 				
 				//////////////////////////////////////////////////////////////////////
 				SaveDailyData.writeDailyDataWithClusterInfo(outfileName_DailyCluster, iDay, header,

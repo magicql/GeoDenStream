@@ -168,8 +168,8 @@ public class LoadDailyPoints
 				////////////////////////////////////////////////////////////////
 				if (interval_idx == current_interval_idx)
 				{
-					tw_x_str = temp_line_array[8];
-					tw_y_str = temp_line_array[9];
+					tw_x_str = temp_line_array[9];
+					tw_y_str = temp_line_array[10];
 					temp_x_val = Double.parseDouble(tw_x_str);
 					temp_y_val = Double.parseDouble(tw_y_str);
 
@@ -181,8 +181,8 @@ public class LoadDailyPoints
 
 					//if (connected_x_index>=0 && connected_y_index>=0)
 					{
-						tw_x_str = temp_line_array[11];
-						tw_y_str = temp_line_array[12];
+						tw_x_str = temp_line_array[12];
+						tw_y_str = temp_line_array[13];
 						temp_x_val = Double.parseDouble(tw_x_str);
 						temp_y_val = Double.parseDouble(tw_y_str);
 						double[] coord1 = new double[2];
