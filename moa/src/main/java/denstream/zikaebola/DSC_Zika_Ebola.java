@@ -400,6 +400,8 @@ public class DSC_Zika_Ebola {
 				point_y_list[iPoint] = temp_coord[1];
 				point_id_list[iPoint] = iPoint;
 				
+				if (temp_coord[1]<-60) continue;
+				
 				if (tpType == 1){
 					den.trainOnInstanceImpl_TpStaticIndex(temp_instance);
 				}

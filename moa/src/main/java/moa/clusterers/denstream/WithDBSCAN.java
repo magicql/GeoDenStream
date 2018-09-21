@@ -27,6 +27,8 @@ package moa.clusterers.denstream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import moa.cluster.Cluster;
 import moa.cluster.Clustering;
@@ -129,6 +131,7 @@ public class WithDBSCAN extends AbstractClusterer {
 		pruned_list = new ArrayList<Integer>();
 	}
 
+	HashMap<Double, double[]> pruned_potential_center_map = new HashMap<Double, double[]>();
 	public void initialDBScan() 
 	{
 		for (int p = 0; p < initBuffer.size(); p++) 
@@ -141,7 +144,7 @@ public class WithDBSCAN extends AbstractClusterer {
 				if (neighbourhood.size() > minPoints) {
 					MicroCluster mc = new MicroCluster(point,
 							point.numAttributes(), timestamp, lambda, currentTimestamp);
-					expandCluster(mc, initBuffer, neighbourhood);
+					expandCluster(mc, initBuffer, neighbourhood);					
 					p_micro_cluster.add(mc);
 				} else {
 					point.covered = false;
@@ -214,7 +217,29 @@ public class WithDBSCAN extends AbstractClusterer {
 					merged = true;
 					if (x.getWeight() > beta * mu) {
 						o_micro_cluster.getClustering().remove(x);
+						
 						p_micro_cluster.getClustering().add(x);
+						double min_dist = 9999999;
+						double nearest_id = 0;
+						for (Map.Entry<Double, double[]> entry : pruned_potential_center_map.entrySet())
+						{
+							double temp_dist = this.distance(entry.getValue(), x.getCenter());
+							if (min_dist == 9999999) 
+							{
+								min_dist = temp_dist;
+								nearest_id = entry.getKey();
+								continue;
+							}
+							if (min_dist>temp_dist)
+							{
+								min_dist = temp_dist;
+								nearest_id = entry.getKey();	
+							}
+						}
+						if (min_dist<epsilon*1.1)
+						{
+							x.setId(nearest_id);
+						}
 					}
 				}
 			}
@@ -243,6 +268,10 @@ public class WithDBSCAN extends AbstractClusterer {
 					for (int iIdx=0; iIdx<temp_size; iIdx++)
 					{
 						pruned_list.add(temp_c.related_point_idxs.get(iIdx));
+					}
+					if (temp_c.getId() > 0)
+					{
+						pruned_potential_center_map.put(temp_c.getId(),temp_c.getCenter());
 					}
 					p_micro_cluster.getClustering().remove(c);
 				}
