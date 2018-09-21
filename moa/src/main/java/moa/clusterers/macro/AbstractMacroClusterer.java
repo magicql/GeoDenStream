@@ -76,7 +76,7 @@ public abstract class AbstractMacroClusterer {
 			}
 		}
 
-		// check if there are 2 clusters with the same color (same id, could
+		// check if there are 2 clusters with the same ID (same id, could
 		// appear after a split);
 		double freeID = 0;
 		List<Double> reservedIDs = new Vector<Double>();

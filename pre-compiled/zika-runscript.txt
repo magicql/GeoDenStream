@@ -1,0 +1,101 @@
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Median C:\manqi\Zika\mean_median.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Median C:\manqi\Zika\mean_median.csv
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Minimum C:\manqi\Zika\mean_min.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Minimum C:\manqi\Zika\mean_min.csv
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Quantile C:\manqi\Zika\mean_quantile.csv
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Quantile C:\manqi\Zika\mean_quantile.csv
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Minute 60
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Minute 60
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Minute 90
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Minute 90
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Minute 140
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Minute 140
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Count 96
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Count 96
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Count 960
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Count 960
+
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 1.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 2.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 3.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 4.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 5.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 6.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 7.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 8.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 9.0 Count 9600
+java -jar DenStream_Zika_Ebola.jar DSC_Zika_Ebola Zika 10.0 Count 9600
+
+
+

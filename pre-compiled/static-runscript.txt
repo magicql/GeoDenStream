@@ -1,0 +1,1 @@
+java -jar DenStream_S.jar DSC_Static C:/manqi/Manuscript/case_boston_tpminute15-60minutes.xml
