@@ -4,7 +4,7 @@ GeoDenStream is an improved DenStream clustering method for acquiring individual
 
 In GeoDenStream, several modifications and improvements are made based on the MOA package to address the memory limitation, overlapping points, and false noise issues. Also, pruning strategy is extended to consider the time stamp of the data records.
 
-Detialed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
+Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
 Examples of its application using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
 ### For other analysis scenarios, a configurable application is provided in master/moa/src/main/java/denstream/configure.
 
