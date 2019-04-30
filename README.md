@@ -6,4 +6,4 @@ There are several problems when using the original DenStream in MOA, which inclu
 
 Detialed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
 Example application that designed for Zika and Ebola tweet data stream can be foound in master/moa/src/main/java/denstream/zikaebola.
-## And a configurable application which can support other analysis scenarios can be found in master/moa/src/main/java/denstream/configure.
+### And a configurable application which can support other analysis scenarios can be found in master/moa/src/main/java/denstream/configure.
