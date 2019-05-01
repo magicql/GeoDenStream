@@ -8,12 +8,13 @@ Detailed modifications and improvements can be found in master/moa/src/main/java
 Examples of its application using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
 
 ---------------------------------------------------------------------------------------------------------------------------------
-##### For other analysis scenarios, a configurable application is provided in master/moa/src/main/java/denstream/configure.
+** For other analysis scenarios, a configurable application is provided in master/moa/src/main/java/denstream/configure. **
 
 A sample xml document is presented as follows:
+```xml
 <DenStreamCase>
 	<Stream>
-		<FileName description="string: input csv file">c:/manqi/Zika/zika_export_forDEN.csv</FileName>
+		<FileName description="string: input csv file">../Zika/zika_export_forDEN.csv</FileName>
 		<XColumnIndex description="integer: column index of X informaton">9</XColumnIndex>
 		<YColumnIndex description="integer: column index of Y informaton">10</YColumnIndex>
 		<TimeColumnIndex description="integer: column index of X informaton">0</TimeColumnIndex>
@@ -35,7 +36,7 @@ A sample xml document is presented as follows:
 		<Beta description="float: beta parameter for pruning">0.2</Beta>
 		<Offline description="float: epsilon*offline for offline DBSCAN">2.0</Offline>
 		<PruningType description="string: Count|Time|Dynamic">Dynamic</PruningType>
-		<PruningValue description="Count: number; Time: number; Dynamic: file">C:/manqi/Manuscript/Zika/mean_median.csv</PruningValue>
+		<PruningValue description="Count: number; Time: number; Dynamic: file">../Zika/mean_median.csv</PruningValue>
 	</Cluster>
 	<Output>
 		<Directory description="string: output directory">c:/manqi/Manuscript/Zika2/clusterdata_e_3.0_tp_Median/</Directory>
@@ -44,7 +45,7 @@ A sample xml document is presented as follows:
 		<ImproveProcessing description="integer: 0-No,1-Yes">1</ImproveProcessing>
 	</Output>
 </DenStreamCase>
-
+```
 
 
 
