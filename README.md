@@ -60,10 +60,9 @@ A sample xml document is presented as follows:
 
 
 Sample dataset1
-![Reference](https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg ''Refernce'')
-![Result](https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg ''Result'')
-
-<img src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "100" height = "100" div align=right />
+<img src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
+<img src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
 
 
+---------------------------------------------------------------------------------------------------------------------------------
 Bifet, A., Holmes, G., Kirkby, R., and Pfahringer, B. (2010). MOA: Massive Online Analysis. J. Mach. Learn. Res. 11, 1601–1604.
