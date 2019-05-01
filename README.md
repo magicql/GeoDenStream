@@ -65,9 +65,9 @@ Sample dataset1 (first is reference, second is GeoDenStream Result, dataset coul
 
 <img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
 
-Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)
+####Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)
 -------------------------------------------------------------------------------------------------------------------------------
-Refernces are (fist is overall distribution of points, the following 10 are references in 10 timestamp)
+####Refernces are (fist is overall distribution of points, the following 10 are references in 10 timestamp)
 -------------------------------------------------------------------------------------------------------------------------------
 <img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference-Overall.jpg" width = "400" height = "400" />
 <img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference1.jpg" width = "400" height = "400" />
@@ -81,7 +81,7 @@ Refernces are (fist is overall distribution of points, the following 10 are refe
 <img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference9.jpg" width = "400" height = "400" />
 <img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference10.jpg" width = "400" height = "400" />
 
-Results are (in 10 timestamps)
+####Results are (in 10 timestamps)
 -------------------------------------------------------------------------------------------------------------------------------
 <img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
 <img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster2.jpg" width = "400" height = "400" />
