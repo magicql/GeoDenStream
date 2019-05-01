@@ -6,15 +6,20 @@ In GeoDenStream, several modifications and improvements are made based on the MO
 
 Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
 There are four main classes in this folder:
-+ **DenPoint.Java** This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
-+ **MicroCluster.Java** In this class, a new function TryInsert was add for attempting add a point into a potential cluster and check whether it can be added. Two lists are added for recording: (1) Ids of the points that belongs to a potential cluster and (2) the distance between each involved point and the center of a potential cluster (could be seen in Line 36 and 37). 
-+ **TimeStamp.Java** This class is same with the original MOA, and it is used for giving a timestamp as long integer for each points. 
-+ **WithDBSCAN.Java** The code in this class has been modified largely. Function trainOnInstanceImpl is a new implemented function which supports the real time based pruning strategy. And function trainOnInstanceImpl_TpStaticIndex keeps the count based pruning strategy as MOA does. A minor issue but also a key point. the function **nearestCluster** was modified. The original nearestCluster has a bug in calculating the minimum distance. Could be seen in Line 483.
++ **DenPoint.java** This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
++ **MicroCluster.java** In this class, a new function TryInsert was add for attempting add a point into a potential cluster and check whether it can be added. Two lists are added for recording: (1) Ids of the points that belongs to a potential cluster and (2) the distance between each involved point and the center of a potential cluster (could be seen in Line 36 and 37). 
++ **TimeStamp.java** This class is same with the original MOA, and it is used for giving a timestamp as long integer for each points. 
++ **WithDBSCAN.java** The code in this class has been modified largely. Function trainOnInstanceImpl is a new implemented function which supports the real time based pruning strategy. And function trainOnInstanceImpl_TpStaticIndex keeps the count based pruning strategy as MOA does. A minor issue but also a key point. the function **nearestCluster** was modified. The original nearestCluster has a bug in calculating the minimum distance. Could be seen in Line 483.
 
 Examples of its application using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
 
 ---------------------------------------------------------------------------------------------------------------------------------
 **For other analysis scenarios, a configurable application is provided in master/moa/src/main/java/denstream/configure.**
++ **DSC_Dynamic.java** This is an entrance for using GeoDenStream, with dynamic memory optimization (loading points with an offline range and using the index strategy).
++ **DSC_Static.java** This is another entrance for using GeoDenStream, without memory optimization (loading all records for generating clusters).
++ **ProcessPotentialCluster.java** This class is used for handling the overlap and false noise issues. Detailed implementation could be checked in the funciton fillPotentialCluster.
++ **ProcessOfflineCluster.java** This class is for get offline clusters based on the results of ProcessPotentialCluster.java.
+For other classes, they are some utilies and could be easy understand.
 
 A sample xml document is presented as follows:
 ```xml
