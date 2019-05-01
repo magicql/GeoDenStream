@@ -60,8 +60,9 @@ A sample xml document is presented as follows:
 
 
 Sample dataset1
-<img src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
-<img src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
+<img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
+
+<img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" />
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
