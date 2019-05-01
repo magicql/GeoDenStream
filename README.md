@@ -93,6 +93,26 @@ A sample xml document is presented as follows:
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference5.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster5.jpg" width = "400" height = "400" /></td>
   </tr>
+  <tr>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference6.jpg" width = "400" height = "400" /></td>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster6.jpg" width = "400" height = "400" /></td>
+  </tr>
+  <tr>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference7.jpg" width = "400" height = "400" /></td>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster7.jpg" width = "400" height = "400" /></td>
+  </tr>
+  <tr>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference8.jpg" width = "400" height = "400" /></td>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster8.jpg" width = "400" height = "400" /></td>
+  </tr>
+  <tr>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference9.jpg" width = "400" height = "400" /></td>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster9.jpg" width = "400" height = "400" /></td>
+  </tr>
+  <tr>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference10.jpg" width = "400" height = "400" /></td>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster10.jpg" width = "400" height = "400" /></td>
+  </tr>
 </table>
 </div>
 
