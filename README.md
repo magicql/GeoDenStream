@@ -59,13 +59,24 @@ A sample xml document is presented as follows:
 ```
 -------------------------------------------------------------------------------------------------------------------------------
 <div >
-<Table>
-  <tr>ample dataset1 (first is reference, second is GeoDenStream Result, dataset could be found in GeoDenStream/TestDatasets/Synthetic1/)<tr>
+<table>
+  <tr>Sample dataset1 (first is reference, second is GeoDenStream Result, dataset could be found in GeoDenStream/TestDatasets/Synthetic1/)<tr>
   <tr>
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/SyntheticStream1-Reference.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" /></td>
   </tr>
-</Table>
+</table>
+</div>
+-------------------------------------------------------------------------------------------------------------------------------
+<div >
+<table>
+  <tr>Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)</tr>
+  <tr>Left are refernces, and right are GeoDenStream Results(fist is overall distribution of points, the following are 10 timestamps)</tr>
+  <tr><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference-Overall.jpg" width = "400" height = "400" /></tr>
+  <tr>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference1.jpg" width = "400" height = "400" /></td>
+    <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster1.jpg" width = "400" height = "400" /></td>
+  </tr>
 </div>
 
 ####Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)
