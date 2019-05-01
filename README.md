@@ -56,9 +56,9 @@ A sample xml document is presented as follows:
     <ImproveProcessing description="integer: 0-No,1-Yes">1</ImproveProcessing>
   </Output>
 </DenStreamCase>
-```xml
+```
 
-
+-------------------------------------------------------------------------------------------------------------------------------
 ####Sample dataset1 (first is reference, second is GeoDenStream Result, dataset could be found in GeoDenStream/TestDatasets/Synthetic1/)
 -------------------------------------------------------------------------------------------------------------------------------
 <img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/SyntheticStream1-Reference.jpg" width = "400" height = "400" />
