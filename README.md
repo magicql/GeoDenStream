@@ -67,7 +67,9 @@ A sample xml document is presented as follows:
   </tr>
 </table>
 </div>
--------------------------------------------------------------------------------------------------------------------------------
+
+<hr></hr>
+
 <div >
 <table>
   <tr>Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)</tr>
