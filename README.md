@@ -5,6 +5,10 @@ GeoDenStream is an improved DenStream clustering method for acquiring individual
 In GeoDenStream, several modifications and improvements are made based on the MOA package to address the memory limitation, overlapping points, and false noise issues. Also, pruning strategy is extended to consider the time stamp of the data records.
 
 Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
+There are four main classes in this folder:
++DenPoint.Java This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
++MicroCluster.Java In this class, a new function TryInsert was add for attempting add a point into a potential cluster and check whether it can be added.
+
 Examples of its application using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
 
 ---------------------------------------------------------------------------------------------------------------------------------
@@ -39,7 +43,7 @@ A sample xml document is presented as follows:
     <PruningValue description="Count: number; Time: number; Dynamic: file">../Zika/mean_median.csv</PruningValue>
   </Cluster>
   <Output>
-    <Directory description="string: output directory">c:/manqi/Manuscript/Zika2/clusterdata_e_3.0_tp_Median/</Directory>
+    <Directory description="string: output directory">../Zika2/clusterdata_e_3.0_tp_Median/</Directory>
     <StartIntervalIndex description="integer: start index of interval">0</StartIntervalIndex>
     <OutputPotential description="integer: 0-No,1-Yes">0</OutputPotential>
     <ImproveProcessing description="integer: 0-No,1-Yes">1</ImproveProcessing>
