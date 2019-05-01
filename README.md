@@ -59,6 +59,10 @@ A sample xml document is presented as follows:
 ```
 
 
+Sample dataset1
+![Reference](https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg ''Refernce'')
+![Result](https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg ''Result'')
+
 
 
 
