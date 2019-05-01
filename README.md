@@ -65,6 +65,7 @@ A sample xml document is presented as follows:
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/SyntheticStream1-Reference.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" /></td>
   </tr>
+</Table>
 </div>
 
 ####Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)
