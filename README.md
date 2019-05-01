@@ -6,8 +6,8 @@ In GeoDenStream, several modifications and improvements are made based on the MO
 
 Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
 There are four main classes in this folder:
-+DenPoint.Java This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
-+MicroCluster.Java In this class, a new function TryInsert was add for attempting add a point into a potential cluster and check whether it can be added.
++ DenPoint.Java This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
++ MicroCluster.Java In this class, a new function TryInsert was add for attempting add a point into a potential cluster and check whether it can be added.
 
 Examples of its application using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
 
