@@ -1,6 +1,6 @@
-# GeoDenStream based on MOA (Massive Online Analysis)
+# GeoDenStream
 
-Please refer to the following publication for more details of this project: 
+Please refer to the following publication for more details of this project:
 Li, M., Croitoru, A., & Yue, S. (2020). GeoDenStream: An improved DenStream clustering method for managing entity data within geographical data streams. Computers & Geosciences, 144, 104563. https://doi.org/10.1016/j.cageo.2020.104563
 
 ---------------------------------------------------------------------------------------------------------------------------------
