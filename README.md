@@ -4,6 +4,9 @@ GeoDenStream is an improved DenStream clustering method for acquiring individual
 
 In GeoDenStream, several modifications and improvements are made based on the MOA package to address the memory limitation, overlapping points, and false noise issues. Also, pruning strategy is extended to consider the time stamp of the data records.
 
+# GeoDenStream publication: 
+# Manqi Li, Arie Croitoru, and Songshan Yue. "GeoDenStream: An improved DenStream clustering method for managing entity data within geographical data streams." Computers & Geosciences 144 (2020): 104563. https://doi.org/10.1016/j.cageo.2020.104563
+
 Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
 There are four main classes in this folder:
 + **DenPoint.java** This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
