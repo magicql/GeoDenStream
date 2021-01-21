@@ -2,31 +2,28 @@
 
 Please refer to the following publication for more details of this project:
 
-Li, M., Croitoru, A., & Yue, S. (2020). GeoDenStream: An improved DenStream clustering method for managing entity data within geographical data streams. Computers & Geosciences, 144, 104563. https://doi.org/10.1016/j.cageo.2020.104563
+Li, M., Croitoru, A., & Yue, S. (2020). GeoDenStream: An improved DenStream clustering method for managing entity data within geographical data streams. *Computers & Geosciences*, 144, 104563. https://doi.org/10.1016/j.cageo.2020.104563
 
 ---------------------------------------------------------------------------------------------------------------------------------
-GeoDenStream is an improved DenStream clustering method for acquiring individual data point information within Big Data Streams. The implementation of GeoDenStream is based on the open source MOA project (Bifet et al., 2010), which is available at (https://github.com/Waikato/moa).
+GeoDenStream is a spatiotemporal entity-based stream clustering method. It is particularly suitable for clustering discrete entities due to its ability to track the relationship between entities and clusters over time. Evaluations of GeoDenStream suggest its ability to efficiently handle memory constraints, overlapping data points, and false noise. The implementation of GeoDenStream is based on the open source MOA project, which is available at (https://github.com/Waikato/moa).
 
-In GeoDenStream, several modifications and improvements are made based on the MOA package to address the memory limitation, overlapping points, and false noise issues. Also, pruning strategy is extended to consider the time stamp of the data records.
+Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream. There are four main classes in this folder:
++ **DenPoint.java** This class is used to record a data point in a stream.
++ **MicroCluster.java** In this class, function TryInsert is introduced for the attempt to add a point into a potential-cluster. Two lists are formulated to record: (1) IDs of the points that belong to a potential-cluster and (2) distance between the point under inspection and the center of a potential-cluster. 
++ **TimeStamp.java** This class is used for giving a timestamp as a long integer for each point. 
++ **WithDBSCAN.java** In this class, function trainOnInstanceImpl is newly implemented that supports the real-time based pruning strategy. Function trainOnInstanceImpl_TpStaticIndex supports the count-based pruning strategy.
 
-Detailed modifications and improvements can be found in master/moa/src/main/java/moa/clusterers/denstream.
-There are four main classes in this folder:
-+ **DenPoint.java** This class is same with the original MOA, which is used to record a point(aka a record, an item, a tweet) in a stream.
-+ **MicroCluster.java** In this class, a new function TryInsert was add for attempting add a point into a potential cluster and check whether it can be added. Two lists are added for recording: (1) Ids of the points that belongs to a potential cluster and (2) the distance between each involved point and the center of a potential cluster (could be seen in Line 36 and 37). 
-+ **TimeStamp.java** This class is same with the original MOA, and it is used for giving a timestamp as long integer for each points. 
-+ **WithDBSCAN.java** The code in this class has been modified largely. Function trainOnInstanceImpl is a new implemented function which supports the real time based pruning strategy. And function trainOnInstanceImpl_TpStaticIndex keeps the count based pruning strategy as MOA does. A minor issue but also a key point. the function **nearestCluster** was modified. The original nearestCluster has a bug in calculating the minimum distance. Could be seen in Line 483.
-
-Examples of its application using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
+Examples of GeoDenStream applications using Twitter data streams can be found in master/moa/src/main/java/denstream/zikaebola.
 
 ---------------------------------------------------------------------------------------------------------------------------------
-**For other analysis scenarios, a configurable application is provided in master/moa/src/main/java/denstream/configure.**
-+ **DSC_Dynamic.java** This is an entrance for using GeoDenStream, with dynamic memory optimization (loading points with an offline range and using the index strategy).
-+ **DSC_Static.java** This is another entrance for using GeoDenStream, without memory optimization (loading all records for generating clusters).
-+ **ProcessPotentialCluster.java** This class is used for handling the overlap and false noise issues. Detailed implementation could be checked in the funciton fillPotentialCluster.
-+ **ProcessOfflineCluster.java** This class is for get offline clusters based on the results of ProcessPotentialCluster.java.
+**For other scenarios, a configurable application is provided in master/moa/src/main/java/denstream/configure.**
++ **DSC_Dynamic.java** This is an entry-level practice of GeoDenStream with dynamic memory optimization (loading points with an offline range and employing the indexing strategy).
++ **DSC_Static.java** This is another entry-level practice of GeoDenStream without memory optimization (loading all records to generate clusters).
++ **ProcessPotentialCluster.java** This class is used to handle point overlap and false noise. Detailed implementation is in the function fillPotentialCluster.
++ **ProcessOfflineCluster.java** This class is for obtaining offline-clusters based on the results of ProcessPotentialCluster.java.
 For other classes, they are some utilies and could be easy understand.
 
-A sample xml document is presented as follows:
+A sample .xml document is presented as below:
 ```xml
 <DenStreamCase>
   <Stream>
@@ -65,11 +62,12 @@ A sample xml document is presented as follows:
 -------------------------------------------------------------------------------------------------------------------------------
 <div >
 <table>
-  <tr>Sample dataset1 (first is reference, second is GeoDenStream Result, dataset could be found in GeoDenStream/TestDatasets/Synthetic1/)<tr>
+  <tr>Sample dataset #1. Dataset can be found in GeoDenStream/TestDatasets/Synthetic1/.<tr>
   <tr>
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/SyntheticStream1-Reference.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" /></td>
   </tr>
+  <tr>Figure 1. The static dataset on the left and its clustering results using GeoDenStream on the right.</tr>
 </table>
 </div>
 
@@ -77,8 +75,7 @@ A sample xml document is presented as follows:
 
 <div >
 <table>
-  <tr>Sample dataset2 (dataset could be found in GeoDenStream/TestDatasets/Synthetic2/)</tr>
-  <tr>Left are refernces, and right are GeoDenStream Results(fist is overall distribution of points, the following are 10 timestamps)</tr>
+  <tr>Sample dataset #2. Dataset could be found in GeoDenStream/TestDatasets/Synthetic2/</tr>
   <tr><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference-Overall.jpg" width = "400" height = "400" /></tr>
   <tr>
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference1.jpg" width = "400" height = "400" /></td>
@@ -120,6 +117,7 @@ A sample xml document is presented as follows:
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference10.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster10.jpg" width = "400" height = "400" /></td>
   </tr>
+  <tr>Figure 2. The evolving dataset on the left and its clustering results using GeoDenStream on the right at different time steps.</tr>
 </table>
 </div>
 
