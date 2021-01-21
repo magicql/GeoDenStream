@@ -67,8 +67,8 @@ A sample .xml document is presented as below:
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/SyntheticStream1-Reference.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://raw.githubusercontent.com/manqili/GeoDenStream/master/TestDatasets/Synthetic1/GeoDenStream_Cluster1.jpg" width = "400" height = "400" /></td>
   </tr>
-  <tr>Figure 1. The static dataset on the left and its clustering results using GeoDenStream on the right.</tr>
 </table>
+  Figure 1. The static dataset on the left and its clustering results using GeoDenStream on the right.
 </div>
 
 <hr></hr>
@@ -117,8 +117,8 @@ A sample .xml document is presented as below:
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/SyntheticStream2-Reference10.jpg" width = "400" height = "400" /></td>
     <td><img style="align:left" src="https://github.com/manqili/GeoDenStream/blob/master/TestDatasets/Synthetic2/GeoDenStream_Cluster10.jpg" width = "400" height = "400" /></td>
   </tr>
-  <tr>Figure 2. The evolving dataset on the left and its clustering results using GeoDenStream on the right at different time steps.</tr>
 </table>
+  Figure 2. The evolving dataset on the left and its clustering results using GeoDenStream on the right at different time steps.
 </div>
 
 
